@@ -1,0 +1,224 @@
+/* ---------- Theme ---------- */
+:root {
+  --cobalt: #2340E8;
+  --sun: #FFC83D;
+  --ink: #0E1330;
+  --mist: #E9ECFF;
+  --bg: #fff;
+  --fg: var(--ink);
+  --line: var(--ink);
+  --hover: var(--mist);
+  --shadow: var(--ink);
+}
+:root.dark {
+  --bg: var(--ink);
+  --fg: #fff;
+  --line: #fff;
+  --hover: rgba(255, 255, 255, 0.1);
+  --shadow: var(--sun);
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+ul { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p { margin: 0; }
+.container { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 4px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.topbar .container { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.brand {
+  display: block;
+  min-width: 0;
+  line-height: 44px;
+  font-size: 1.125rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.actions { display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0; }
+
+.nav {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  flex-direction: column;
+  background: var(--bg);
+  border-top: 2px solid var(--line);
+  font-weight: 700;
+}
+.nav.open { display: flex; }
+.nav a { display: flex; align-items: center; min-height: 48px; padding: 0 1.5rem; }
+.nav a:hover { text-decoration: underline; }
+
+.btn {
+  min-height: 44px;
+  padding: 0 0.75rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover { background: var(--hover); }
+.btn:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 2px; }
+.menu-btn { width: 44px; padding: 0; font-size: 1.25rem; line-height: 1; }
+
+/* ---------- Hero ---------- */
+.hero { background: var(--cobalt); color: #fff; }
+.hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.avatar {
+  width: 9rem;
+  height: 9rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 4px solid var(--ink);
+  background: var(--sun);
+  object-fit: cover;
+  object-position: 50% 30%;
+  box-shadow: 6px 6px 0 0 var(--sun);
+}
+.hero-text { min-width: 0; }
+.name {
+  font-size: 2.25rem;
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
+}
+.role {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+/* ---------- Sections ---------- */
+.section { padding: 2.5rem 0; scroll-margin-top: 5rem; }
+.about, .skills-section { border-bottom: 4px solid var(--line); }
+.bio { max-width: 42rem; font-size: 1.5rem; font-weight: 600; line-height: 1.25; }
+
+.section-title {
+  margin-bottom: 1.75rem;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  scroll-margin-top: 5rem;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 3.5rem;
+  height: 6px;
+  margin-top: 0.5rem;
+  background: var(--sun);
+}
+
+/* Skills */
+.skills { display: flex; flex-wrap: wrap; gap: 0.875rem; }
+.pill {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: 3px 3px 0 0 var(--shadow);
+  font-size: 1.0625rem;
+  font-weight: 800;
+}
+.pill:nth-child(3n + 1) { background: var(--sun); color: var(--ink); }
+.pill:nth-child(3n + 2) { background: var(--mist); color: var(--ink); }
+
+/* Projects */
+.projects { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+.project {
+  border: 3px solid var(--line);
+  background: var(--bg);
+  box-shadow: 6px 6px 0 0 var(--shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.project:hover, .project:focus-within { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 0 var(--shadow); }
+.project a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  text-decoration: none;
+}
+.project a:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 3px; }
+.project h3 { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.025em; }
+.project p { margin-top: 0.5rem; font-size: 1.0625rem; line-height: 1.4; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag { padding: 0.125rem 0.5rem; background: var(--ink); color: #fff; font-size: 0.875rem; font-weight: 700; }
+:root.dark .tag { background: var(--sun); color: var(--ink); }
+.more { margin-top: auto; padding-top: 1.5rem; font-weight: 800; }
+.project:hover .more, .project a:focus-visible .more { text-decoration: underline; text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .project { transition: none; }
+  .project:hover, .project:focus-within { transform: none; }
+}
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 640px) {
+  .container { padding: 0 1.5rem; }
+  .actions { gap: 1.5rem; }
+  .nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    border: 0;
+    background: transparent;
+    font-size: 0.875rem;
+  }
+  .nav a { min-height: 0; padding: 0; }
+  .menu-btn { display: none; }
+
+  .hero .container { flex-direction: row; align-items: center; gap: 3rem; padding-top: 6rem; padding-bottom: 6rem; }
+  .avatar { width: 14rem; height: 14rem; box-shadow: 8px 8px 0 0 var(--sun); }
+  .name { font-size: 4.5rem; }
+  .role { font-size: 1.25rem; }
+
+  .section { padding: 3.5rem 0; }
+  .bio { font-size: 1.875rem; }
+  .section-title { font-size: 2.5rem; }
+  .projects { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 768px) {
+  .name { font-size: 6rem; }
+}

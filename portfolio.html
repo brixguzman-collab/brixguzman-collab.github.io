@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>My Portfolio</title>
+  <script>
+    // Apply the saved theme before first paint to avoid a flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="portfolio.css" />
+</head>
+<body id="top">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <a id="brand" class="brand" href="#top"></a>
+      <div class="actions">
+        <nav id="nav" class="nav" aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#skills-heading">Skills</a>
+          <a href="#projects-heading">Projects</a>
+        </nav>
+        <button id="theme-toggle" class="btn" type="button" aria-pressed="false" aria-label="Switch color theme">Dark mode</button>
+        <button id="menu-toggle" class="btn menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero: circular photo next to name -->
+  <header class="hero">
+    <div class="container">
+      <img id="profile-pic" class="avatar" alt="Profile picture" />
+      <div class="hero-text">
+        <h1 id="name" class="name"></h1>
+        <p id="title" class="role"></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about" class="section about">
+      <p id="bio" class="bio"></p>
+    </section>
+
+    <section class="section skills-section" aria-labelledby="skills-heading">
+      <h2 id="skills-heading" class="section-title">Skills</h2>
+      <ul id="skills" class="skills"></ul>
+    </section>
+
+    <section class="section" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" class="section-title">Projects</h2>
+      <ul id="projects" class="projects"></ul>
+    </section>
+  </main>
+
+  <script src="portfolio.js"></script>
+</body>
+</html>
